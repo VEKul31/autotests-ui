@@ -48,3 +48,37 @@ users = {
 )
 def test_identifiers(phone_number:str):
     ...
+
+@pytest.mark.parametrize("x", [10, 20])  # ids не указаны → сгенерируются автоматически
+def test_auto_ids(x):
+    ...
+
+@pytest.mark.parametrize("role", ["admin", "user"], ids=["ADMIN", "USER"])
+def test_roles(role):
+    ...
+
+@pytest.mark.parametrize("n", [0, 255], ids=("min", "max"))
+def test_bounds(n):
+    ...
+
+@pytest.mark.parametrize(
+    "params",
+    [(200, {"ok": True}), (400, {"error": "bad"})],
+    ids=lambda p: f"status={p[0]}"
+)
+def test_api(params):
+    ...
+
+@pytest.mark.parametrize("x", [0, 1, 2], ids=lambda v: "zero" if v == 0 else None)
+def test_mixed_ids(x):
+    ...
+
+@pytest.mark.parametrize(
+    "name",
+    [
+        pytest.param("", id="empty"),
+        pytest.param("x" * 255, id="max-len"),
+    ],
+)
+def test_name(name):
+    ...
