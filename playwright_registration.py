@@ -3,7 +3,7 @@ from playwright.sync_api import sync_playwright, expect
 
 with sync_playwright() as playwright:
     browser = playwright.chromium.launch(headless=False)
-    context = browser.new_context()  # Создание контекста
+    context = browser.new_context(storage_state="browser-state.json")  # Создание контекста
     page = context.new_page()  # Создание страницы
 
     page.goto("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/auth/registration")
