@@ -5,13 +5,19 @@
 .venv
 __pycache__
 
-#allure
+# allure
 allure_results
 allure_report
 
-#testing_artifacts
+# testing_artifacts
 *.html
 *.json
 videos
 tracing
 allure-results
+
+# coverage
+coverage.html
+coverage-results
+coverage-report.json
+coverage-history.json
